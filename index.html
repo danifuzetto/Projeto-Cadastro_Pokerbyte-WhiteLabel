@@ -10,6 +10,8 @@
         integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
     <!-- Option 1: Include in HTML -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://pokerbyte.com.br/assets/vendors/intl-tel-input/css/intlTelInput.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet" href="./css/main.css">
 </head>
 
@@ -17,42 +19,94 @@
 
     <header>
         <div class="header">
+
+            <div class="logo-img">
+                <img alt="Clube do Boteco" src="./images/betei-logo.png" width="100px">
+            </div>
+
             <nav>
                 <ul>
                     <a href="http://whatsapp.com/" target="_blank">
-                        <li>
-                            <i class="bi bi-whatsapp"></i>&nbsp Suporte
+                        <li class="menu-header">
+                            Depositar
+                        </li>
+                    </a>
+                    <a href="http://whatsapp.com/" target="_blank">
+                        <li class="menu-header">
+                            Sacar
                         </li>
                     </a>
                 </ul>
             </nav>
 
-            <div class="logo-center">
-                <img alt="Clube do Boteco" src="./images/clube_boteco-06.png" width="100px">
-            </div>
-
-            <div class="d-flex gap-2 justify-content-center py-5">
-                <button class="btn btn-entrar btn-outline-secondary d-inline-flex align-items-center" type="button">
-                    Entrar
-                </button>
-                <button class="btn btn-primary d-inline-flex align-items-center" type="button">
-                    Cadastrar
-                </button>
-            </div>
         </div>
     </header>
 
     <main>
         <div class="container">
-            Clube do Boteco
+            <div class="card">
+                <h1 class="cardheader">
+                    CADASTRE-SE
+                </h1>
+                <form id="userRegister">
+
+                    <div class="inputs-cad1">
+                        <input type="text" name="cpf" id="recipient-cpf" maxlength="14" placeholder="CPF" required/>
+                        <i id="circle-true" class="bi bi-check-circle-fill circleimagetrue"></i>
+                        <i id="circle-false" class="bi bi-x-circle-fill circleimagefalse"></i>
+                    </div>
+
+                    <div class="inputs-cad">
+                        <input type="text" name="name" id="recipient-name" placeholder="Nome Completo" onkeypress="return validateName(event)" required/>
+                    </div>
+
+                    <div class="inputs-cad">
+                        <input type="email" name="email" id="recipient-email" placeholder="E-mail" required/>
+                    </div>
+
+                    <div class="inputs-cad">
+                        <input name="tel" type="text"  id="recipient-fone" placeholder="" maxlength="15" required/>
+                    </div>
+
+                    <div class="inputs-cad">
+                        <input type="text" name="birthdate" id="dt_nascimento" class="form-control" placeholder=" DATA DE NASCIMENTO">
+                    </div>
+
+                    <div class="inputs-cad">
+                        <input type="text"  name="username" id="recipient-nick" placeholder="NICK" onkeypress="return validateNick(event)" maxlength="20" required/>
+                    </div>
+
+                    <div class="inputs-cad">
+                        <input type="password" name="password" class="validate password" id="recipient-pw" placeholder="SENHA" maxlength="16" required />
+                        <button type="button" id="btnToggle" class="toggle">
+                            <img id="eyeIcon" src="assets/img/view.png" alt="">
+                            <img id="eyeIconHide" class="hide toggle" src="assets/img/hide.png" alt="">
+                        </button>
+                    </div>
+
+                    <div class="inputs-cad">
+                        <input type="password" class="validate passwordConfirm" id="recipient-pwConf" placeholder="REPETIR SENHA" maxlength="16" required />
+                    </div>
+
+                    <div id="password_rules">
+                        <h4>Sua senha deve atender a estes requisitos:</h4>
+                        <ul>
+                            <li class="password_length">Pelo menos 8 caracteres</li>
+                            <li class="password_uppercase">Pelo menos 1 letra maiúscula</li>
+                            <li class="password_number">Pelo menos um numero</li>
+                            <li class="password_match"></li>
+                        </ul>
+                    </div>
+
+            </div>
         </div>
     </main>
 
-    <footer>
+    <!-- <footer>
         <div class="footer">
-            Clube do Boteco
+            Betei.club
         </div>
-    </footer>
+    </footer> -->
 
     <!-- BOOTSTRAP -->
     <script src="https://code.jquery.com/jquery-3.6.4.js"
@@ -62,5 +116,12 @@
         crossorigin="anonymous"></script>
 
 </body>
+
+<script src="assets/js/libs/jquery/jquery.js"></script>
+<script src="assets/js/libs/jquery/jquery-mask.js"></script>
+<script src="./js/main.js"></script>
+<script src="https://pokerbyte.com.br/assets/vendors/intl-tel-input/js/intlTelInput.js"></script>
+<script src="https://kit.fontawesome.com/fe191507c0.js" crossorigin="anonymous"></script>
+<script src="assets/js/libs/SweetAlert/sweetalert.min.js"></script>
 
 </html>

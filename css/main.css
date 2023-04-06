@@ -16,16 +16,15 @@ a {
 header {
     background-color: #1b1b1b;
     color: white;
-    padding: 10px;
 }
 
 .header {
     max-width: 1440px;
-    max-height: 60px;
     margin: auto;
+    padding: 10px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
 }
 
 ul {
@@ -35,13 +34,16 @@ ul {
 
 li {
     list-style: none;
-    background-color: rgb(11, 169, 11);
-    padding: 7px;
-    border-radius: 0.375rem;
 }
 
-.logo-center {
-    margin: auto;
+.menu-header {
+    display: inline-block;
+    background-color: red;
+    font-size: 14px;
+    min-width: 80px;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
 }
 
 .btn-entrar {
@@ -56,6 +58,69 @@ main {
 
 .container {
     max-width: 1440px;
+    padding: 5px;
+}
+
+.card {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    float: right;
+    width: 420px;
+    max-width: 420px;
+    padding: 10px;
+
+}
+
+.cardheader {
+    background-color: white;
+    text-align: center;
+}
+
+input,select {
+    box-sizing: border-box;
+    width: 100%;
+    height: 40px;
+    padding: 0 15px;
+    border-radius: 10px;
+    border: 1px solid #f1f1f1;
+    background-color: #f4f4f4;
+}
+
+.inputs-cad {
+    margin: 10px 0;
+}
+
+.inputs-cad1 {
+    position: relative;
+}
+
+.circleimagetrue {
+    position: absolute;
+    color: green;
+    font-size: 20px;
+    right: 10px;
+    top: 5.5px;
+}
+
+.circleimagefalse {
+    position: absolute;
+    color: red;
+    font-size: 20px;
+    right: 10px;
+    top: 5.5px;
+}
+
+#circle-true {
+    display: none;
+}
+
+#circle-false {
+    display: none;
+}
+
+#recipient-fone {
+
 }
 
 /* FOOTER */
