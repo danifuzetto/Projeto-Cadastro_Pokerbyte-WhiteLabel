@@ -1,0 +1,9 @@
+@media screen and (max-width: 500px) {
+    .card {
+        min-width: 100%;
+    }
+
+    .card-container {
+        min-height: 100vh;
+    }
+}
