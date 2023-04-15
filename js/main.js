@@ -158,9 +158,11 @@ $(document).ready(function () {
     });
 
 
-    // VALIDAR TELEFONE
+    // Validação Telefone Cadastro
     $('#recipient-fone').on('keyup', function () {
-        if ($("#recipient-fone").val() == '' || $("#recipient-fone").val().length < 15) {
+        if ($("#recipient-fone").val() == ''
+            || $("#recipient-fone").val().length < 15
+        ) {
             $("#circle-false3").css('display', 'block');
             $("#circle-true3").css('display', 'none');
             return false;
@@ -172,9 +174,26 @@ $(document).ready(function () {
         };
     });
 
+        // Validação Telefone Saque
+        $('#recipient-fone-saq').on('keyup', function () {
+            if ($("#recipient-fone-saq").val() == ''
+                || $("#recipient-fone-saq").val().length < 15
+            ) {
+                $("#circle-false24").css('display', 'block');
+                $("#circle-true24").css('display', 'none');
+                return false;
+            }
+    
+            else {
+                $("#circle-false24").css('display', 'none');
+                $("#circle-true24").css('display', 'block');
+            };
+        });
+
     //Validação data de nascimento
     $('#dt_nascimento').on('keyup', function () {
-        if ($("#dt_nascimento").val() == '' || $("#dt_nascimento").val().length < 10) {
+        if ($("#dt_nascimento").val() == ''
+            || $("#dt_nascimento").val().length < 10) {
             $("#circle-false4").css('display', 'block');
             $("#circle-true4").css('display', 'none');
             return false;
@@ -382,25 +401,24 @@ $(document).ready(function () {
         }
 
         else {
-            // fetch('./api.php', {
-            //     method: 'POST',
-            //     body: data
-            // })
-            //     .then(res => res.json())
-            //     .then(res => {
-            //         if (res && res.success) {
-            //             $('#userRegister').hide();
-            //             $('.modal-cad').addClass('animate__animated animate__fadeInRight');
-            //             $('#download-app').show();
-            //         } else {
-            //             alert(res.message || 'Erro na solicitação.')
-            //         }
-            //     })
-            //     .catch(error => {
-            //         console.log(error);
-            //         return error;
-            //     });
-            alert("Passou...");
+            fetch('./api.php', {
+                method: 'POST',
+                body: data
+            })
+                .then(res => res.json())
+                .then(res => {
+                    if (res && res.success) {
+                        $('#userRegister').hide();
+                        $('.card').addClass('animate__animated animate__fadeInRight');
+                        $('#download-app').show();
+                    } else {
+                        alert(res.message || 'Erro na solicitação.')
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                    return error;
+                });
         };
     });
 
@@ -457,6 +475,9 @@ $(document).ready(function () {
             || $("#dt_nascimento-saq").val().length < 10
             || $('#recipient-email-saq').val() == ''
             || !rx.test($('#recipient-email-saq').val().trim())
+            || $("#recipient-fone-saq").val() == ''
+            || $("#recipient-fone-saq").val().length < 15
+            || $("pix-type").val() == ''
             || $('#recipient-saq-value').val() == ''
         ) {
             swal({
@@ -568,6 +589,7 @@ $('#recipient-cpf-saq').mask('000.000.000-00');
 
 // mask telefone
 $('#recipient-fone').mask('(00) 0 0000-0000');
+$('#recipient-fone-saq').mask('(00) 0 0000-0000');
 
 // mask moeda
 $('#recipient-dep-value').maskMoney({allowNegative: false, thousands:'.', decimal:',', affixesStay: false});

@@ -1,7 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
+:root {
+    --font-family: 'Nunito';
+
+    --secondary-color: red;
+    --secondary-color-border: rgb(235, 23, 23);
+}
+
 body {
-    font-family: "Nunito";
+    font-family: var(--font-family);
     color: rgb(93, 93, 93);
     margin: 0;
     padding: 0;
@@ -30,6 +37,7 @@ header {
     top: 0;
     background-color: #201e1e;
     color: white;
+    z-index: 999;
 }
 
 .header {
@@ -56,8 +64,8 @@ li {
 
 .menu-header {
     display: inline-block;
-    background-color: rgb(212, 25, 25);
-    border: 2px solid rgb(212, 25, 25);
+    background-color: var(--secondary-color);
+    border: 2px solid var(--secondary-color);
     font-size: 14px;
     min-width: 80px;
     padding: 10px 11px;
@@ -68,18 +76,18 @@ li {
 }
 
 .menu-header:hover {
-    background-color: rgb(184, 30, 30);
-    border: 2px solid rgb(184, 30, 30);
+    background-color: var(--secondary-color-border);
+    border: 2px solid var(--secondary-color-border);
 }
 
 .semfundo {
     background-color: rgb(23, 201, 17, 0);
-    border: 2px solid rgb(212, 25, 25);
+    border: 2px solid var(--secondary-color);
 }
 
 .semfundo:hover {
     background-color: rgb(23, 201, 17, 0);
-    border: 2px solid rgb(184, 30, 30);
+    border: 2px solid var(--secondary-color-border);
 }
 
 /* MAIN */
@@ -88,8 +96,8 @@ main {
     background: url("../images/bg-test.jpg");
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
-    height: calc(100vh - 80px);
+    background-repeat: repeat;
+    height: 100%;
 }
 
 .container {
@@ -180,6 +188,10 @@ textarea:focus, input:focus, select:focus {
     font-size: 16px;
 }
 
+.circlewarning:hover {
+    content: 'Test';
+}
+
 
 .circleimagetrue {
     position: absolute;
@@ -195,42 +207,6 @@ textarea:focus, input:focus, select:focus {
     top: 10px;
     color: red;
     font-size: 20px;
-}
-
-#circle-true,
-#circle-true1,
-#circle-true2,
-#circle-true3,
-#circle-true4,
-#circle-true5,
-#circle-true7,
-#circle-true8,
-#circle-true10,
-#circle-true11,
-#circle-true12,
-#circle-true20,
-#circle-true21,
-#circle-true22,
-#circle-true23,
-#circle-false,
-#circle-false1,
-#circle-false2,
-#circle-false3,
-#circle-false4,
-#circle-false5,
-#circle-false7,
-#circle-false8,
-#circle-false10,
-#circle-false11,
-#circle-false12,
-#circle-false20,
-#circle-false21,
-#circle-false22,
-#circle-false23,
-#circle-warning4,
-#deposit-qrcode,
-#saq-ok {
-    display: none;
 }
 
 .passcheck {
@@ -266,7 +242,7 @@ textarea:focus, input:focus, select:focus {
     font-weight: 700;
     border-radius: 0;
     text-align: center;
-    background-color: red;
+    background-color: var(--secondary-color);
     padding: 15px 50px;
     max-width: 250px;
     margin: 20px auto 0 auto;
@@ -277,7 +253,40 @@ textarea:focus, input:focus, select:focus {
     color: rgb(161, 161, 161);
 }
 
-/* DEPÓSITO MODAL */
+/* CONCLUSÃO CADASTRO */
+#download-app {
+    margin-top: 25px;
+}
+
+.cadastro-ok {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.cadastro-done-text {
+    text-align: center;
+    color: rgb(93, 93, 93);
+}
+
+.img-app-done {
+    text-align: center;
+}
+
+.suprema-logo {
+    background-color: black;
+    padding: 10px;
+    border-radius: 20px;
+    margin-bottom: 15px;
+}
+
+.icons-download {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+/* DEPÓSITO/SAQUE MODAL */
 @keyframes fadeIn {
     from { opacity: 0.2; }
     to   { opacity: 1; }
@@ -302,6 +311,7 @@ textarea:focus, input:focus, select:focus {
     margin: auto;
     background-color: rgba(0, 0, 0, 0.60);
     animation: fadeIn 500ms;
+    z-index: 1000;
 }
 
 .card-container {
@@ -314,7 +324,7 @@ textarea:focus, input:focus, select:focus {
     left: 0;
     margin: auto;
     max-width: 720px;
-    max-height: 620px;
+    max-height: 720px;
     border-radius: 0;
     background-color: white;
     padding: 15px;
@@ -337,7 +347,6 @@ textarea:focus, input:focus, select:focus {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* background-color:rgba(39, 39, 39, 0.90); */
     color: rgb(134, 134, 134);
     position: absolute;
     right: 4px;
@@ -354,7 +363,7 @@ textarea:focus, input:focus, select:focus {
 
 #card-close:hover {
     color: white;
-    background-color: red;
+    background-color: var(--secondary-color);
     border-radius: 0;
 }
 
@@ -404,10 +413,14 @@ textarea:focus, input:focus, select:focus {
     color: white;
     border-radius: 0;
     text-align: center;
-    background-color: red;
+    background-color: var(--secondary-color);
     padding: 15px 30px;
     width: 320px;
     max-height: 50px;
+}
+
+#deposit-qrcode {
+    margin-top: 25px;
 }
 
 #saq-ok {
@@ -466,7 +479,7 @@ footer {
 }
 
 .swal-button {
-    background-color: red!important;
+    background-color: var(--secondary-color)!important;
     border-radius: 0;
     border: none!important;
     outline: 0!important;
@@ -474,7 +487,12 @@ footer {
 
 .swal-button:hover,
 .swal-button:focus {
-    background-color: rgb(226, 11, 11)!important;
+    background-color: var(--secondary-color)!important;
     border: none!important;
     outline: 0!important;
+}
+
+/* REMOVER */
+#download-app {
+    display: none;
 }
