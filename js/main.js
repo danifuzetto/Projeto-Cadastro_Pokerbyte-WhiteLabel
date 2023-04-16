@@ -1,3 +1,18 @@
+// Cliente
+var cliente = 'Poker em Casa'
+var cliente_central = 'Central PEC 24HS'
+var texto_header = 'PLAY POKER CONOSCO!'
+var quemsou_row1 = 'Um  dos maiores clubes de Poker Online do Brasil, somos afiliados à Liga Suprema a mais de 3 anos.'
+var quemsou_row2 = 'Referência em atendimento, agilidade e segurança, construímos uma grande marca com várias premiações, sendo elas: Clube revelação de 2021, Clube com mais agentes ativos de 2021, '
+var quemsou_row3 = ''
+
+document.title = cliente_central;
+$('.nomecliente').text(`${cliente}`);
+$('.cardheader').text(`${texto_header}`);
+$('.row1').text(`${quemsou_row1}`);
+$('.row2').text(`${quemsou_row2}`);
+$('.row3').text(`${quemsou_row3}`);
+
 $(document).ready(function () {
     //Validação CPF
     $("#recipient-cpf").on('keyup', function () {
@@ -15,6 +30,25 @@ $(document).ready(function () {
         else {
             $("#circle-false").css('display', 'block');
             $("#circle-true").css('display', 'none');
+        };
+    });
+
+    // Validação CPF Vínculo
+    $("#recipient-cpf-vinc").on('keyup', function () {
+        if ($("#recipient-cpf-vinc").val() == '') {
+            $("#circle-false25").css('display', 'block');
+            $("#circle-true25").css('display', 'none');
+            return false;
+        };
+
+        if (validateCPF($("#recipient-cpf-vinc").val())) {
+            $("#circle-false25").css('display', 'none');
+            $("#circle-true25").css('display', 'block');
+        }
+
+        else {
+            $("#circle-false25").css('display', 'block');
+            $("#circle-true25").css('display', 'none');
         };
     });
 
@@ -122,6 +156,22 @@ $(document).ready(function () {
         };
     });
 
+    //Validação do Nome Vínculo
+    $('#recipient-name-vinc').on('keyup', function () {
+        if ($("#recipient-name-vinc").val().length > 7
+            && $("#recipient-name-vinc").val().match(/[ ]/)
+        ) {
+            $("#circle-false26").css('display', 'none');
+            $("#circle-true26").css('display', 'block');
+            return false;
+        }
+
+        else {
+            $("#circle-false26").css('display', 'block');
+            $("#circle-true26").css('display', 'none');
+        };
+    });
+
     //Validação E-mail
     let rx = /[\w-\.]{2,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
     $('#recipient-email').on('keyup', function () {
@@ -137,6 +187,23 @@ $(document).ready(function () {
         } else {
             $("#circle-false2").css('display', 'block');
             $("#circle-true2").css('display', 'none');
+        };
+    });
+
+    //Validação E-mail Vínculo
+    $('#recipient-email-vinc').on('keyup', function () {
+
+        if (rx.test($('#recipient-email-vinc').val().trim()) == '') {
+            $("#circle-false27").css('display', 'block');
+            $("#circle-true27").css('display', 'none');
+        };
+
+        if (rx.test($('#recipient-email-vinc').val().trim())) {
+            $("#circle-false27").css('display', 'none');
+            $("#circle-true27").css('display', 'block');
+        } else {
+            $("#circle-false27").css('display', 'block');
+            $("#circle-true27").css('display', 'none');
         };
     });
 
@@ -174,21 +241,37 @@ $(document).ready(function () {
         };
     });
 
-        // Validação Telefone Saque
-        $('#recipient-fone-saq').on('keyup', function () {
-            if ($("#recipient-fone-saq").val() == ''
-                || $("#recipient-fone-saq").val().length < 15
-            ) {
-                $("#circle-false24").css('display', 'block');
-                $("#circle-true24").css('display', 'none');
-                return false;
-            }
-    
-            else {
-                $("#circle-false24").css('display', 'none');
-                $("#circle-true24").css('display', 'block');
-            };
-        });
+    // Validação Telefone Vínculo
+    $('#recipient-fone-vinc').on('keyup', function () {
+        if ($("#recipient-fone-vinc").val() == ''
+            || $("#recipient-fone-vinc").val().length < 15
+        ) {
+            $("#circle-false28").css('display', 'block');
+            $("#circle-true28").css('display', 'none');
+            return false;
+        }
+
+        else {
+            $("#circle-false28").css('display', 'none');
+            $("#circle-true28").css('display', 'block');
+        };
+    });
+
+    // Validação Telefone Saque
+    $('#recipient-fone-saq').on('keyup', function () {
+        if ($("#recipient-fone-saq").val() == ''
+            || $("#recipient-fone-saq").val().length < 15
+        ) {
+            $("#circle-false24").css('display', 'block');
+            $("#circle-true24").css('display', 'none');
+            return false;
+        }
+
+        else {
+            $("#circle-false24").css('display', 'none');
+            $("#circle-true24").css('display', 'block');
+        };
+    });
 
     //Validação data de nascimento
     $('#dt_nascimento').on('keyup', function () {
@@ -205,6 +288,21 @@ $(document).ready(function () {
         };
     });
 
+    //Validação data de nascimento Vínculo
+    $('#dt_nascimento-vinc').on('keyup', function () {
+        if ($("#dt_nascimento-vinc").val() == ''
+            || $("#dt_nascimento-vinc").val().length < 10) {
+            $("#circle-false29").css('display', 'block');
+            $("#circle-true29").css('display', 'none');
+            return false;
+        }
+
+        else {
+            $("#circle-false29").css('display', 'none');
+            $("#circle-true29").css('display', 'block');
+        };
+    });
+
     //Validação data de nascimento Saque
     $('#dt_nascimento-saq').on('keyup', function () {
         if ($("#dt_nascimento-saq").val() == ''
@@ -218,6 +316,22 @@ $(document).ready(function () {
         else {
             $("#circle-false22").css('display', 'none');
             $("#circle-true22").css('display', 'block');
+        };
+    });
+
+    //Validação do ID no Aplicativo
+    $('#app_id').on('keyup', function () {
+        if ($("#app_id").val() == ''
+            || $("#app_id").val().length < 5
+        ) {
+            $("#circle-false30").css('display', 'block');
+            $("#circle-true30").css('display', 'none');
+            return false;
+        }
+
+        else {
+            $("#circle-false30").css('display', 'none');
+            $("#circle-true30").css('display', 'block');
         };
     });
 
@@ -422,6 +536,57 @@ $(document).ready(function () {
         };
     });
 
+    //Envio de Dados para Vínculo ARRUMAR
+    $('#button-vinc').on('click', async function () {
+        const form = document.querySelector('#userLink');
+        const formData = new FormData(form)
+        const data = new URLSearchParams(formData)
+
+        if ($('#recipient-cpf-vinc').val() == ''
+            || !(validateCPF($("#recipient-cpf-vinc").val()))
+            || $('#recipient-name-vinc').val() == ''
+            || $("#recipient-name-vinc").val().length < 7
+            || !$("#recipient-name-vinc").val().match(/[ ]/)
+            || $('#recipient-email-vinc').val() == ''
+            || !rx.test($('#recipient-email-vinc').val().trim())
+            || $('#recipient-fone-vinc').val() == ''
+            || $("#recipient-fone-vinc").val().length < 15
+            || $("#dt_nascimento-vinc").val() == ''
+            || $("#dt_nascimento-vinc").val().length < 10
+            || $('#recipient-nick').val() == ''
+            || $('#recipient-nick').val().length < 2
+        ) {
+            swal({
+                title: "Atenção:",
+                text: "Verifique se todos os campos foram preenchidos corretamente.",
+                icon: "warning",
+                button: "Voltar",
+            });
+        }
+
+        else {
+            // fetch('./api.php', {
+            //     method: 'POST',
+            //     body: data
+            // })
+            //     .then(res => res.json())
+            //     .then(res => {
+            //         if (res && res.success) {
+            //             $('#userDeposit').hide();
+            //             $('.modal-cad').addClass('animate__animated animate__fadeInRight');
+            //             $('#deposit-qrcode').show();
+            //         } else {
+            //             alert(res.message || 'Erro na solicitação.')
+            //         }
+            //     })
+            //     .catch(error => {
+            //         console.log(error);
+            //         return error;
+            //     });
+            alert("Passou...");
+        };
+    });
+
     //Envio de Dados para Depósito
     $('#button-dep').on('click', async function () {
         const form = document.querySelector('#userDeposit');
@@ -477,7 +642,7 @@ $(document).ready(function () {
             || !rx.test($('#recipient-email-saq').val().trim())
             || $("#recipient-fone-saq").val() == ''
             || $("#recipient-fone-saq").val().length < 15
-            || $("pix-type").val() == ''
+            || $("#pix-type option:selected").val() == 0
             || $('#recipient-saq-value').val() == ''
         ) {
             swal({
@@ -539,24 +704,33 @@ $(document).ready(function () {
     });
 
 
-    // ABRIR MODAL DEPÓSITO
-    $("#deposit-button").on('click', function () {
-        $("#depsaq-modal").css('display', 'block');
+    // ABRIR MODAL VÍNCULO / SAQUE / DEPÓSITO
+    $(".deposit-button").on('click', function () {
         $("#card-saq").css('display', 'none');
+        $("#card-vinc").css('display', 'none');
+        $("#modal").css('display', 'block');
         $("#card-dep").css('display', 'block');
     });
 
-    $("#cashout-button").on('click', function () {
-        $("#depsaq-modal").css('display', 'block');
+    $(".cashout-button").on('click', function () {
         $("#card-dep").css('display', 'none');
+        $("#card-vinc").css('display', 'none');
+        $("#modal").css('display', 'block');
         $("#card-saq").css('display', 'block');
+    });
+
+    $(".link-account-button").on('click', function () {
+        $("#modal").css('display', 'block');
+        $("#card-dep").css('display', 'none');
+        $("#card-saq").css('display', 'none');
+        $("#card-vinc").css('display', 'block');
     });
 
     //Close Button
     $("#card-close").on('click', function () {
-        
+
         // $(".card-dep").css('animation', 'go-down 1s');
-        $("#depsaq-modal").css('display', 'none');
+        $("#modal").css('display', 'none');
         $("#recipient-cpf-dep").prop('value', '');
         $("#recipient-dep-value").prop('value', '');
         $("#recipient-cpf-saq").prop('value', '');
@@ -580,20 +754,23 @@ const numberOnly = (evt) => {
 
 //mask data nascimento
 $('#dt_nascimento').mask('00/00/0000');
+$('#dt_nascimento-vinc').mask('00/00/0000');
 $('#dt_nascimento-saq').mask('00/00/0000');
 
 //mask cpf
 $('#recipient-cpf').mask('000.000.000-00');
+$('#recipient-cpf-vinc').mask('000.000.000-00');
 $('#recipient-cpf-dep').mask('000.000.000-00');
 $('#recipient-cpf-saq').mask('000.000.000-00');
 
 // mask telefone
 $('#recipient-fone').mask('(00) 0 0000-0000');
+$('#recipient-fone-vinc').mask('(00) 0 0000-0000');
 $('#recipient-fone-saq').mask('(00) 0 0000-0000');
 
 // mask moeda
-$('#recipient-dep-value').maskMoney({allowNegative: false, thousands:'.', decimal:',', affixesStay: false});
-$('#recipient-saq-value').maskMoney({allowNegative: false, thousands:'.', decimal:',', affixesStay: false});
+$('#recipient-dep-value').maskMoney({ allowNegative: false, thousands: '.', decimal: ',', affixesStay: false });
+$('#recipient-saq-value').maskMoney({ allowNegative: false, thousands: '.', decimal: ',', affixesStay: false });
 
 
 //Regex nome
